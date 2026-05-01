@@ -1,6 +1,8 @@
-import { Instagram, Sparkles, Linkedin, Github } from "lucide-react";
+import { useState } from "react";
+import { Instagram, Sparkles, Linkedin, Github, Pause, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArtSlideshow from "@/components/ArtSlideshow";
+import type { Artwork } from "@/data/artworks";
 
 // ============================================================
 // Change background image here.
