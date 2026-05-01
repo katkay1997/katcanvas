@@ -141,7 +141,7 @@ const Index = () => {
       </header>
 
       {/* === Auto slideshow, aligned with the computer-screen area === */}
-      <section className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-10">
+      <section className="absolute inset-x-0 top-[55%] -translate-y-1/2 z-10">
         <ArtSlideshow />
       </section>
 
