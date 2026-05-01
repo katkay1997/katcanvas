@@ -22,7 +22,7 @@ const ArtSlideshow = () => {
         {reel.map((art, i) => (
           <figure
             key={`${art.id}-${i}`}
-            className="glass-panel shrink-0 w-[58vw] sm:w-[40vw] md:w-[28vw] lg:w-[22vw] xl:w-[18vw] rounded-2xl overflow-hidden border-primary/20"
+            className="glass-panel shrink-0 w-[78vw] sm:w-[55vw] md:w-[40vw] lg:w-[32vw] xl:w-[26vw] rounded-2xl overflow-hidden border-4 border-primary/60 shadow-[0_0_25px_hsl(var(--glow-purple)/0.45)]"
           >
             <div className="aspect-[4/5] overflow-hidden bg-muted/40">
               <img
