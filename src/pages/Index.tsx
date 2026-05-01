@@ -109,7 +109,7 @@ const Index = () => {
       </nav>
 
       {/* === Top bar: brand + tagline + IG === */}
-      <header className="relative z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 md:px-12 pt-12 md:pt-16">
+      <header className="relative z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 md:px-12 pt-3 md:pt-4">
         <div className="animate-fade-in">
           <div className="flex items-center gap-2 text-accent/90">
             <Sparkles className="h-4 w-4" />
