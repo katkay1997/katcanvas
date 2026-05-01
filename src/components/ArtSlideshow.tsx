@@ -24,12 +24,12 @@ const ArtSlideshow = () => {
             key={`${art.id}-${i}`}
             className="glass-panel shrink-0 w-[78vw] sm:w-[55vw] md:w-[40vw] lg:w-[32vw] xl:w-[26vw] rounded-2xl overflow-hidden border-4 border-primary/60 shadow-[0_0_25px_hsl(var(--glow-purple)/0.45)]"
           >
-            <div className="aspect-[3/4] w-full overflow-hidden bg-muted/40">
+            <div className="aspect-[4/5] overflow-hidden bg-muted/40">
               <img
                 src={art.image}
                 alt={art.title}
                 loading="lazy"
-                className="w-full h-full object-cover scale-105"
+                className="w-full h-full object-cover"
               />
             </div>
             <figcaption className="px-3 py-2 bg-background/40 backdrop-blur-md">
