@@ -74,9 +74,6 @@ const Index = () => {
           >
             Kat Canvas
           </h1>
-          <p className="font-body text-sm md:text-base text-muted-foreground mt-1 italic">
-            My art world off of Instagram
-          </p>
         </div>
 
         <a
@@ -100,10 +97,10 @@ const Index = () => {
         <ArtSlideshow />
       </section>
 
-      {/* === Bottom hint === */}
+      {/* === Bottom tagline === */}
       <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center px-6">
-        <p className="glass-panel rounded-full px-5 py-2 text-xs md:text-sm text-muted-foreground animate-fade-in">
-          ✦ A quiet little gallery from the desk ✦
+        <p className="font-body text-sm md:text-base font-bold text-foreground italic animate-fade-in text-glow">
+          My art world off of Instagram
         </p>
       </div>
     </main>
