@@ -138,6 +138,9 @@
 .animate-marquee-rtl {
   animation: marquee-rtl 40s linear infinite;
 }
+.marquee-paused {
+  animation-play-state: paused !important;
+}
 
 /* Twinkly stars – soft, dreamy background sparkle */
 @keyframes twinkle {
