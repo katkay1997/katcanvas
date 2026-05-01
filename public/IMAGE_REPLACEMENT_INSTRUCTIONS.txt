@@ -1,0 +1,128 @@
+================================================================
+KAT CANVAS — How to replace the mock images & links
+================================================================
+
+Hi! Everything you need to customize is in just a few places.
+This file lives in /public/ but you can also keep a copy anywhere.
+
+----------------------------------------------------------------
+1) WHERE TO STORE YOUR ART IMAGES
+----------------------------------------------------------------
+Recommended folder:   /public/images/artwork/
+
+Create that folder if it doesn't exist, then drop your art files
+inside, e.g.:
+
+   /public/images/artwork/moonlit-muse.jpg
+   /public/images/artwork/velvet-hours.jpg
+   /public/images/artwork/sketch-01.jpg
+
+Anything inside /public/ is served from the site root, so you
+reference it in code as:  "/images/artwork/your-file.jpg"
+
+----------------------------------------------------------------
+2) WHERE THE MOCK IMAGE LINKS LIVE
+----------------------------------------------------------------
+File:        src/data/artworks.ts
+
+Inside that file there are THREE arrays:
+
+   • galleryArtworks   → shown when you click the COMPUTER SCREEN
+   • sketchArtworks    → shown when you click the SKETCHBOOK
+   • studyArtworks     → shown when you click the STACK OF PAPERS
+
+Each item looks like this:
+
+   {
+     id: "g1",
+     title: "Moonlit Muse",
+     category: "Illustration",
+     description: "A quiet portrait painted under city stars.",
+     image: ph("katcanvas-1"),   // <-- placeholder
+   }
+
+----------------------------------------------------------------
+3) HOW TO REPLACE ONE MOCK IMAGE (example)
+----------------------------------------------------------------
+Before:
+   {
+     id: "g1",
+     title: "Moonlit Muse",
+     category: "Illustration",
+     description: "A quiet portrait painted under city stars.",
+     image: ph("katcanvas-1"),
+   }
+
+After (using your own file in /public/images/artwork/):
+   {
+     id: "g1",
+     title: "Moonlit Muse",
+     category: "Illustration",
+     description: "A quiet portrait painted under city stars.",
+     image: "/images/artwork/moonlit-muse.jpg",
+   }
+
+That's it — save the file and the gallery updates automatically.
+
+You can also change the title, category and description text the
+same way. Add or remove items freely; the grid handles any number.
+
+----------------------------------------------------------------
+4) HOW TO CHANGE THE BACKGROUND IMAGE
+----------------------------------------------------------------
+File:        src/pages/Index.tsx
+
+Look for the comment:
+   // Change background image here.
+
+Today it imports:
+   import bgImage from "@/assets/artist-desk-bg.png";
+
+To swap it:
+   1. Put your new background in:   src/assets/your-new-bg.png
+   2. Change the import line to:
+        import bgImage from "@/assets/your-new-bg.png";
+
+Tip: keep a similar composition (desk in center, screen,
+sketchbook, papers, pencil cup roughly in the same spots) so the
+glowing hotspots line up. If you use a very different background,
+adjust the hotspot positions in src/pages/Index.tsx — each
+<Hotspot /> takes top/left/width/height as percentages.
+
+----------------------------------------------------------------
+5) HOW TO CHANGE THE INSTAGRAM LINK
+----------------------------------------------------------------
+File:        src/pages/Index.tsx
+
+Look for the comment:
+   // Change Instagram link here.
+
+Update this line:
+   const INSTAGRAM_URL = "https://instagram.com/YOUR_USERNAME";
+
+Replace YOUR_USERNAME with your handle. Save — done.
+
+----------------------------------------------------------------
+6) RECOMMENDED IMAGE SIZES
+----------------------------------------------------------------
+Gallery (finished pieces):  ~800 x 1000 px   (4:5 portrait)
+Sketches & Studies:         ~800 x 800 px    (1:1 square)
+Background image:           ~1600 x 2400 px  (portrait, sharp)
+
+Format:    .jpg for photos / paintings (smaller files)
+           .png if you need transparency
+
+Keep each file under ~500 KB for fast loading. Tools like
+TinyPNG or Squoosh.app compress without visible quality loss.
+
+----------------------------------------------------------------
+7) QUICK CHECKLIST
+----------------------------------------------------------------
+[ ] Created /public/images/artwork/ folder
+[ ] Dropped my art files inside
+[ ] Updated `image:` paths in src/data/artworks.ts
+[ ] Updated titles / categories / descriptions
+[ ] Updated INSTAGRAM_URL in src/pages/Index.tsx
+[ ] (Optional) Replaced background in src/assets/
+
+Have fun! ✦  — Kat Canvas portfolio template
