@@ -1,6 +1,8 @@
-import { Instagram, Sparkles, Linkedin, Github } from "lucide-react";
+import { useState } from "react";
+import { Instagram, Sparkles, Linkedin, Github, Pause, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArtSlideshow from "@/components/ArtSlideshow";
+import type { Artwork } from "@/data/artworks";
 
 // ============================================================
 // Change background image here.
@@ -14,8 +16,30 @@ import bgImage from "@/assets/artist-desk-bg.png";
 const INSTAGRAM_URL = "https://instagram.com/YOUR_USERNAME";
 
 const Index = () => {
+  const [paused, setPaused] = useState(false);
+  const [previewArt, setPreviewArt] = useState<Artwork | null>(null);
+
+  const handleSlideClick = (art: Artwork) => {
+    // Slider is paused — open the enlarged preview
+    setPreviewArt(art);
+  };
+
+  const closePreview = () => {
+    // Closing the preview leaves the slider paused (per spec)
+    setPreviewArt(null);
+  };
+
+  const togglePlay = () => {
+    // If user resumes playback, also close any open preview
+    setPaused((p) => {
+      const next = !p;
+      if (!next) setPreviewArt(null);
+      return next;
+    });
+  };
+
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-background">
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-background">
       {/* === Background image === */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -140,17 +164,82 @@ const Index = () => {
         </a>
       </header>
 
-      {/* === Auto slideshow, aligned with the computer-screen area === */}
-      <section className="absolute inset-x-0 top-[55%] -translate-y-1/2 z-10">
-        <ArtSlideshow />
+      {/* === Auto slideshow (in-flow so the page can grow taller) === */}
+      <section className="relative z-10 mt-24 md:mt-36">
+        <ArtSlideshow paused={paused} onSlideClick={handleSlideClick} />
       </section>
 
-      {/* === Bottom tagline === */}
-      <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center px-6">
+      {/* === Pause / Play control (between slider and quote) === */}
+      <div className="relative z-20 mt-10 md:mt-14 flex justify-center px-6">
+        <Button
+          onClick={togglePlay}
+          size="lg"
+          aria-pressed={paused}
+          aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+          className="glass-panel bg-background/30 hover:bg-background/40 text-foreground rounded-full px-6 backdrop-blur-md border border-primary/40 transition-all hover:scale-105"
+        >
+          {paused ? (
+            <>
+              <Play className="mr-2 h-5 w-5" /> Play
+            </>
+          ) : (
+            <>
+              <Pause className="mr-2 h-5 w-5" /> Pause
+            </>
+          )}
+        </Button>
+      </div>
+
+      {/* === Quote / tagline === */}
+      <div className="relative z-20 mt-12 md:mt-20 pb-10 flex justify-center px-6">
         <p className="font-body text-sm md:text-base font-bold text-foreground italic animate-fade-in text-glow">
           My art world off of Instagram
         </p>
       </div>
+
+      {/* === Click-to-preview overlay (only opens while paused) === */}
+      {previewArt && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Preview: ${previewArt.title}`}
+          onClick={closePreview}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-background/70 backdrop-blur-md animate-fade-in"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="glass-panel relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl border-2 border-primary/50 shadow-[var(--shadow-glow)] bg-background/60 flex flex-col md:flex-row animate-scale-in"
+          >
+            <button
+              onClick={closePreview}
+              aria-label="Close preview"
+              className="absolute top-3 right-3 z-10 rounded-full p-2 bg-background/60 hover:bg-background/80 text-foreground backdrop-blur-md transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="flex-1 bg-muted/30 flex items-center justify-center overflow-hidden">
+              <img
+                src={previewArt.image}
+                alt={previewArt.title}
+                className="w-full h-full max-h-[60vh] md:max-h-[90vh] object-contain"
+              />
+            </div>
+
+            <div className="md:w-80 p-6 md:p-8 flex flex-col justify-center bg-background/40 backdrop-blur-md">
+              <div className="text-[11px] uppercase tracking-[0.25em] text-accent/90">
+                {previewArt.category}
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl mt-2 text-glow">
+                {previewArt.title}
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground mt-3 leading-relaxed">
+                {previewArt.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
