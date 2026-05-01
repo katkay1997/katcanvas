@@ -136,6 +136,22 @@
 }
 
 .animate-marquee-rtl {
-  animation: marquee-rtl 60s linear infinite;
+  animation: marquee-rtl 40s linear infinite;
+}
+
+/* Twinkly stars – soft, dreamy background sparkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.9); }
+  50%      { opacity: 0.9;  transform: scale(1.15); }
+}
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 9999px;
+  background: hsl(var(--glow-soft));
+  box-shadow: 0 0 6px hsl(var(--glow-soft) / 0.8), 0 0 12px hsl(var(--glow-pink) / 0.4);
+  animation: twinkle 4s ease-in-out infinite;
+  pointer-events: none;
 }
 

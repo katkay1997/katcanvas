@@ -28,6 +28,38 @@ const Index = () => {
         aria-hidden="true"
       />
 
+      {/* === Twinkly stars (soft, dreamy) === */}
+      <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
+        {[
+          { top: "8%", left: "12%", delay: "0s", size: 2 },
+          { top: "14%", left: "78%", delay: "1.2s", size: 3 },
+          { top: "22%", left: "42%", delay: "2.4s", size: 2 },
+          { top: "30%", left: "88%", delay: "0.6s", size: 2 },
+          { top: "38%", left: "6%", delay: "3s", size: 3 },
+          { top: "46%", left: "60%", delay: "1.8s", size: 2 },
+          { top: "55%", left: "20%", delay: "2.1s", size: 2 },
+          { top: "62%", left: "92%", delay: "0.3s", size: 3 },
+          { top: "70%", left: "48%", delay: "1.5s", size: 2 },
+          { top: "78%", left: "14%", delay: "2.7s", size: 2 },
+          { top: "84%", left: "70%", delay: "0.9s", size: 3 },
+          { top: "90%", left: "34%", delay: "3.3s", size: 2 },
+          { top: "18%", left: "26%", delay: "2s", size: 2 },
+          { top: "50%", left: "82%", delay: "1.1s", size: 2 },
+        ].map((s, i) => (
+          <span
+            key={i}
+            className="star"
+            style={{
+              top: s.top,
+              left: s.left,
+              width: `${s.size}px`,
+              height: `${s.size}px`,
+              animationDelay: s.delay,
+            }}
+          />
+        ))}
+      </div>
+
       {/* === Top bar: brand + tagline + IG === */}
       <header className="relative z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 md:px-12 pt-8 md:pt-10">
         <div className="animate-fade-in">
