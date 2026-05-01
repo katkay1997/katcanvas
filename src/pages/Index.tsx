@@ -1,4 +1,4 @@
-import { Instagram, Sparkles } from "lucide-react";
+import { Instagram, Sparkles, Linkedin, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArtSlideshow from "@/components/ArtSlideshow";
 
@@ -60,8 +60,56 @@ const Index = () => {
         ))}
       </div>
 
+      {/* === Navigation bar === */}
+      <nav
+        className="relative z-30 w-full border-b border-border/30 bg-background/20 backdrop-blur-sm"
+        aria-label="Main navigation"
+      >
+        <div className="flex items-stretch justify-between">
+          {/* Left: brand */}
+          <a
+            href="#"
+            className="px-6 md:px-8 py-4 text-sm md:text-base font-semibold tracking-[0.35em] text-foreground border-r border-border/30 hover:bg-foreground/5 transition-colors"
+          >
+            KATERA
+          </a>
+
+          {/* Right: social icons + links */}
+          <ul className="flex items-stretch">
+            <li className="border-l border-border/30">
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="flex items-center justify-center h-full px-4 md:px-5 hover:bg-foreground/5 transition-colors"
+              >
+                <Linkedin className="h-4 w-4 text-foreground" />
+              </a>
+            </li>
+            <li className="border-l border-border/30">
+              <a
+                href="#"
+                aria-label="GitHub"
+                className="flex items-center justify-center h-full px-4 md:px-5 hover:bg-foreground/5 transition-colors"
+              >
+                <Github className="h-4 w-4 text-foreground" />
+              </a>
+            </li>
+            {["INFO", "PROJECTS", "BLOG"].map((item) => (
+              <li key={item} className="border-l border-border/30">
+                <a
+                  href="#"
+                  className="flex items-center h-full px-5 md:px-7 text-xs md:text-sm tracking-[0.25em] text-foreground hover:bg-foreground/5 transition-colors"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+
       {/* === Top bar: brand + tagline + IG === */}
-      <header className="relative z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 md:px-12 pt-8 md:pt-10">
+      <header className="relative z-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 md:px-12 pt-12 md:pt-16">
         <div className="animate-fade-in">
           <div className="flex items-center gap-2 text-accent/90">
             <Sparkles className="h-4 w-4" />
@@ -93,7 +141,7 @@ const Index = () => {
       </header>
 
       {/* === Auto slideshow, aligned with the computer-screen area === */}
-      <section className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-10">
+      <section className="absolute inset-x-0 top-[55%] -translate-y-1/2 z-10">
         <ArtSlideshow />
       </section>
 
