@@ -16,8 +16,30 @@ import bgImage from "@/assets/artist-desk-bg.png";
 const INSTAGRAM_URL = "https://instagram.com/YOUR_USERNAME";
 
 const Index = () => {
+  const [paused, setPaused] = useState(false);
+  const [previewArt, setPreviewArt] = useState<Artwork | null>(null);
+
+  const handleSlideClick = (art: Artwork) => {
+    // Slider is paused — open the enlarged preview
+    setPreviewArt(art);
+  };
+
+  const closePreview = () => {
+    // Closing the preview leaves the slider paused (per spec)
+    setPreviewArt(null);
+  };
+
+  const togglePlay = () => {
+    // If user resumes playback, also close any open preview
+    setPaused((p) => {
+      const next = !p;
+      if (!next) setPreviewArt(null);
+      return next;
+    });
+  };
+
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-background">
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-background">
       {/* === Background image === */}
       <div
         className="absolute inset-0 bg-cover bg-center"
