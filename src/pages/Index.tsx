@@ -169,7 +169,40 @@ const Index = () => {
 
       {/* === Auto slideshow (in-flow so the page can grow taller) === */}
       <section className="relative z-10 mt-24 md:mt-36">
-        <ArtSlideshow paused={paused} onSlideClick={handleSlideClick} />
+        {/* Counter + arrow controls (above the slider) */}
+        <div className="relative z-20 mb-6 md:mb-8 flex items-center justify-center gap-5 px-6">
+          <button
+            type="button"
+            onClick={() => slideshowRef.current?.prev()}
+            aria-label="Previous slide"
+            className="glass-panel flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-background/30 text-foreground text-xl backdrop-blur-md transition-all hover:scale-110 hover:bg-background/50"
+          >
+            ←
+          </button>
+
+          <div
+            className="glass-panel rounded-full border border-primary/40 bg-background/30 px-5 py-2 text-xs md:text-sm tracking-[0.2em] uppercase text-foreground backdrop-blur-md"
+            aria-live="polite"
+          >
+            Slide {currentIndex + 1} of {totalSlides}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => slideshowRef.current?.next()}
+            aria-label="Next slide"
+            className="glass-panel flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-background/30 text-foreground text-xl backdrop-blur-md transition-all hover:scale-110 hover:bg-background/50"
+          >
+            →
+          </button>
+        </div>
+
+        <ArtSlideshow
+          ref={slideshowRef}
+          paused={paused}
+          onSlideClick={handleSlideClick}
+          onIndexChange={setCurrentIndex}
+        />
       </section>
 
       {/* === Pause / Play control (between slider and quote) === */}
