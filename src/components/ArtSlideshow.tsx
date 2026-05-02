@@ -82,7 +82,7 @@ const ArtSlideshow = forwardRef<ArtSlideshowHandle, Props>(
               <figure
                 key={art.id}
                 onClick={clickable ? () => onSlideClick!(art) : undefined}
-                className={`glass-panel shrink-0 w-[78vw] sm:w-[55vw] md:w-[40vw] lg:w-[32vw] xl:w-[26vw] rounded-2xl overflow-hidden border-4 border-primary/60 shadow-[0_0_25px_hsl(var(--glow-purple)/0.45)] transition-all duration-500 ${
+                className={`glass-panel shrink-0 w-[90vw] sm:w-[68vw] md:w-[52vw] lg:w-[44vw] xl:w-[38vw] rounded-2xl overflow-hidden border-4 border-primary/60 shadow-[0_0_25px_hsl(var(--glow-purple)/0.45)] transition-all duration-500 ${
                   isActive ? "scale-100 opacity-100" : "scale-[0.92] opacity-70"
                 } ${clickable ? "cursor-zoom-in hover:scale-[1.02]" : ""}`}
               >
@@ -113,28 +113,28 @@ const ArtSlideshow = forwardRef<ArtSlideshowHandle, Props>(
         {/* Per-breakpoint slide width + gap variables (matches Tailwind classes above) */}
         <style>{`
           [aria-label="Artwork slideshow"] > div:nth-child(3) {
-            --slide-w: 78vw;
+            --slide-w: 90vw;
             --slide-gap: 1.25rem;
           }
           @media (min-width: 640px) {
             [aria-label="Artwork slideshow"] > div:nth-child(3) {
-              --slide-w: 55vw;
+              --slide-w: 68vw;
             }
           }
           @media (min-width: 768px) {
             [aria-label="Artwork slideshow"] > div:nth-child(3) {
-              --slide-w: 40vw;
+              --slide-w: 52vw;
               --slide-gap: 1.75rem;
             }
           }
           @media (min-width: 1024px) {
             [aria-label="Artwork slideshow"] > div:nth-child(3) {
-              --slide-w: 32vw;
+              --slide-w: 44vw;
             }
           }
           @media (min-width: 1280px) {
             [aria-label="Artwork slideshow"] > div:nth-child(3) {
-              --slide-w: 26vw;
+              --slide-w: 38vw;
             }
           }
         `}</style>
