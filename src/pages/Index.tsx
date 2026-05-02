@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Instagram, Sparkles, Linkedin, Github, Pause, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ArtSlideshow from "@/components/ArtSlideshow";
-import type { Artwork } from "@/data/artworks";
+import ArtSlideshow, { type ArtSlideshowHandle } from "@/components/ArtSlideshow";
+import { galleryArtworks, type Artwork } from "@/data/artworks";
 
 // ============================================================
 // Change background image here.
@@ -18,6 +18,9 @@ const INSTAGRAM_URL = "https://instagram.com/YOUR_USERNAME";
 const Index = () => {
   const [paused, setPaused] = useState(false);
   const [previewArt, setPreviewArt] = useState<Artwork | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const slideshowRef = useRef<ArtSlideshowHandle>(null);
+  const totalSlides = galleryArtworks.length;
 
   const handleSlideClick = (art: Artwork) => {
     // Slider is paused — open the enlarged preview
@@ -166,7 +169,40 @@ const Index = () => {
 
       {/* === Auto slideshow (in-flow so the page can grow taller) === */}
       <section className="relative z-10 mt-24 md:mt-36">
-        <ArtSlideshow paused={paused} onSlideClick={handleSlideClick} />
+        {/* Counter + arrow controls (above the slider) */}
+        <div className="relative z-20 mb-6 md:mb-8 flex items-center justify-center gap-5 px-6">
+          <button
+            type="button"
+            onClick={() => slideshowRef.current?.prev()}
+            aria-label="Previous slide"
+            className="glass-panel flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-background/30 text-foreground text-xl backdrop-blur-md transition-all hover:scale-110 hover:bg-background/50"
+          >
+            ←
+          </button>
+
+          <div
+            className="glass-panel rounded-full border border-primary/40 bg-background/30 px-5 py-2 text-xs md:text-sm tracking-[0.2em] uppercase text-foreground backdrop-blur-md"
+            aria-live="polite"
+          >
+            Slide {currentIndex + 1} of {totalSlides}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => slideshowRef.current?.next()}
+            aria-label="Next slide"
+            className="glass-panel flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-background/30 text-foreground text-xl backdrop-blur-md transition-all hover:scale-110 hover:bg-background/50"
+          >
+            →
+          </button>
+        </div>
+
+        <ArtSlideshow
+          ref={slideshowRef}
+          paused={paused}
+          onSlideClick={handleSlideClick}
+          onIndexChange={setCurrentIndex}
+        />
       </section>
 
       {/* === Pause / Play control (between slider and quote) === */}
