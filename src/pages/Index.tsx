@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Instagram, Sparkles, Linkedin, Github, Pause, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ArtSlideshow from "@/components/ArtSlideshow";
-import type { Artwork } from "@/data/artworks";
+import ArtSlideshow, { type ArtSlideshowHandle } from "@/components/ArtSlideshow";
+import { galleryArtworks, type Artwork } from "@/data/artworks";
 
 // ============================================================
 // Change background image here.
