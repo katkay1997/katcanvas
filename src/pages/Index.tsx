@@ -45,8 +45,8 @@ const Index = () => {
     <main className="relative min-h-screen w-full overflow-x-hidden bg-background">
       {/* === Background image === */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
+        className="absolute inset-0 bg-cover"
+        style={{ backgroundImage: `url(${bgImage})`, backgroundPosition: "30% center" }}
         aria-hidden="true"
       />
       {/* Gentle violet wash so text stays readable without hiding the art */}
