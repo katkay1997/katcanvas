@@ -68,7 +68,7 @@ const ArtSlideshow = forwardRef<ArtSlideshowHandle, Props>(
 
         <div
           ref={trackRef}
-          className="flex gap-5 md:gap-7 transition-transform duration-700 ease-in-out will-change-transform px-[11vw] sm:px-[22.5vw] md:px-[30vw] lg:px-[34vw] xl:px-[37vw]"
+          className="flex gap-5 md:gap-7 transition-transform duration-700 ease-in-out will-change-transform px-[5vw] sm:px-[16vw] md:px-[24vw] lg:px-[28vw] xl:px-[31vw]"
           style={{
             // Each slide width + gap is variable; translate by index * (slide% + gap)
             // We approximate using calc with a CSS var per breakpoint via inline style.
