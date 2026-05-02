@@ -18,6 +18,9 @@ const INSTAGRAM_URL = "https://instagram.com/YOUR_USERNAME";
 const Index = () => {
   const [paused, setPaused] = useState(false);
   const [previewArt, setPreviewArt] = useState<Artwork | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const slideshowRef = useRef<ArtSlideshowHandle>(null);
+  const totalSlides = galleryArtworks.length;
 
   const handleSlideClick = (art: Artwork) => {
     // Slider is paused — open the enlarged preview
