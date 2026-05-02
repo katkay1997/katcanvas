@@ -46,7 +46,7 @@ const Index = () => {
       {/* === Background image === */}
       <div
         className="absolute inset-0 bg-cover"
-        style={{ backgroundImage: `url(${bgImage})`, backgroundPosition: "65% center" }}
+        style={{ backgroundImage: `url(${bgImage})`, backgroundPosition: "70% center" }}
         aria-hidden="true"
       />
       {/* Gentle violet wash so text stays readable without hiding the art */}
