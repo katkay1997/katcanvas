@@ -13,7 +13,7 @@ import bgImage from "@/assets/artist-desk-bg.png";
 // ============================================================
 // Change Instagram link here.
 // ============================================================
-const INSTAGRAM_URL = "https://instagram.com/YOUR_USERNAME";
+const INSTAGRAM_URL = "https://www.instagram.com/katera_kanvas?igsh=ZHQxbnNrb3pyOHk1";
 
 const Index = () => {
   const [paused, setPaused] = useState(false);
@@ -114,7 +114,7 @@ const Index = () => {
             </li>
             <li className="border-l border-border/30">
               <a
-                href="#"
+                href="https://github.com/katkay1997"
                 aria-label="GitHub"
                 className="flex items-center justify-center h-full px-4 md:px-5 hover:bg-foreground/5 transition-colors"
               >
