@@ -49,7 +49,7 @@ export const galleryArtworks: Artwork[] = [
   { id: "g29", title: "Nice Lipstick",         category: "Illustration",    description: "My first person drawing on iPad",  image: "/images/artwork/29-Red-lips.jpg" },
   { id: "g30", title: "Baby Potter",       category: "Illustration", description: "A song that won't quite leave.",          image: "/images/artwork/30-Baby-potter.jpg" },
   { id: "g31", title: "Protective Cover",        category: "Illustration", description: "A lady with a wrap over her locs",           image: "/images/artwork/31-wrap.jpg" },
-  { id: "g32", title: "Sticker Heart",      category: "Mixed Media",  description: "Layered cutouts on a love note.",              image: ph("katcanvas-32") },
+  { id: "g32", title: "Posing for a Magazine",      category: "Illustration",  description: "Two pretty ladies from Reddit",              image: "/images/artwork/32-girlfriends.png" },
   { id: "g33", title: "Galaxy Pocket",      category: "Digital Paint", description: "A small universe held in one hand.",          image: ph("katcanvas-33") },
   { id: "g34", title: "Soft Goodnight",     category: "Illustration", description: "The last sketch before sleep.",                image: ph("katcanvas-34") },
 ];
